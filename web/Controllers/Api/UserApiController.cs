@@ -13,6 +13,7 @@ namespace web.Controllers_Api
 {
     [Route("api/v1/User")]
     [ApiController]
+    [ApiKeyAuth]
     public class UserApiController : ControllerBase
     {
         private readonly CloudContext _context;

@@ -11,7 +11,7 @@ namespace web.Filters
     public class ApiKeyAuthAttribute : Attribute, IAsyncActionFilter
     {
         private const string ApiKeyHeaderName = "ApiKey";
-        public async Task OnActionExecution(ActionExecutingContext context, ActionExecutionDelegate next)
+        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             if(!context.HttpContext.Request.Headers.TryGetValue(ApiKeyHeaderName, out var potentialApiKey))
             {
@@ -22,7 +22,7 @@ namespace web.Filters
             var configuration = context.HttpContext.RequestServices.GetRequiredService<IConfiguration>();
             var apiKey = configuration.GetValue<string>("ApiKey");
 
-            if(apiKey.Equals(potentialApiKey))
+            if(!apiKey.Equals(potentialApiKey))
             {
                 context.Result = new UnauthorizedResult();
                 return;
@@ -30,11 +30,6 @@ namespace web.Filters
 
             await next();
             
-        }
-
-        public Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
-        {
-            throw new NotImplementedException();
         }
     }
 }
