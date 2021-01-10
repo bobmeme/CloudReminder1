@@ -10,7 +10,7 @@ using web.Models;
 
 namespace web.Controllers_Api
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/group")]
     [ApiController]
     public class GroupApiController : ControllerBase
     {
