@@ -1,5 +1,6 @@
 # CloudReminder
 Člana ekipe, porazdelitev dela 2. dela seminarske:
+
 63190113 Blaž Grilj - Android App
 63190083 Miha Čuček - .NET REST, Azure
 
